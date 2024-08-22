@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OA.Persistence", "src\OA.Pe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OA.Service", "src\OA.Service\OA.Service.csproj", "{B20723E2-C6FC-41B2-8807-FC1E52B012F0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OA.Test.Unit", "src\OA.Test.Unit\OA.Test.Unit.csproj", "{FDDC1E0E-296B-448C-90C2-9364B118F5E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OA.UnitTest", "src\OA.Test.Unit\OA.UnitTest.csproj", "{FDDC1E0E-296B-448C-90C2-9364B118F5E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

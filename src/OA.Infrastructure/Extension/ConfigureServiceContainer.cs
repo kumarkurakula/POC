@@ -35,8 +35,7 @@ namespace OA.Infrastructure.Extension
         {
             serviceCollection
                 .AddScoped<InMemoryDbContext>()
-                .AddScoped<IApplicationInMemoryDbContext, ApplicationInMemoryDbContext>()
-                .AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+                .AddScoped<IApplicationInMemoryDbContext, ApplicationInMemoryDbContext>();
         }
 
         public static void AddSwaggerOpenAPI(this IServiceCollection serviceCollection)
