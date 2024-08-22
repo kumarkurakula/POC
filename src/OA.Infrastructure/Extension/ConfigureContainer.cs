@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Logging;
 using OA.Service.Middleware;
-using Serilog;
 
 namespace OA.Infrastructure.Extension
 {
@@ -21,11 +19,6 @@ namespace OA.Infrastructure.Extension
                     setupAction.SwaggerEndpoint("/swagger/OpenAPISpecification/swagger.json", "EasyGroceries e-commerce shop API");
                     setupAction.RoutePrefix = "OpenAPI";
                 });
-        }
-
-        public static void ConfigureSwagger(this ILoggerFactory loggerFactory)
-        {
-            loggerFactory.AddSerilog();
         }
     }
 }

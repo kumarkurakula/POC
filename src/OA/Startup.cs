@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.FeatureManagement;
 using OA.Infrastructure.Extension;
 using OA.Service;
 using Serilog;
@@ -27,13 +25,12 @@ namespace OA
 
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configBuilder)
-                .Enrich.WithProperty("EnvName", Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"))
                 .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory log)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -46,8 +43,6 @@ namespace OA
                  .AllowAnyMethod());
 
             app.ConfigureCustomExceptionMiddleware();
-
-            log.AddSerilog();
 
             app.UseRouting();
 
@@ -73,8 +68,6 @@ namespace OA
             services.AddServiceLayer();
 
             services.AddVersion();
-
-            services.AddFeatureManagement();
         }
     }
 }
