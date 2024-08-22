@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using OA.Service.Exceptions;
+using Serilog;
 using System;
 using System.Net;
 using System.Net.Mime;
@@ -63,7 +64,7 @@ namespace OA.Service.Middleware
                     break;
             }
 
-            logger.LogError(result);
+            Log.Error(exception, result);
 
             context.Response.ContentType = MediaTypeNames.Application.Json;
             context.Response.StatusCode = code;
