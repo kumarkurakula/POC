@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using OA.Domain;
 using Serilog;
+using System;
+using System.IO;
 
 namespace OA
 {
@@ -8,8 +12,17 @@ namespace OA
     {
         public static void Main(string[] args)
         {
+            var configBuilder = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
+               .AddJsonFile(path: $"appsettings.{Environment.GetEnvironmentVariable(Constants.ASPNETCORE_ENVIRONMENT)}.json", optional: false, reloadOnChange: true)
+               .Build();
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(configBuilder)
+                .CreateLogger();
+
             CreateHostBuilder(args)
-                .UseSerilog()
                 .Build()
                 .Run();
         }
@@ -21,6 +34,7 @@ namespace OA
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();
-            });
+            })
+            .UseSerilog();
     }
 }

@@ -5,9 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OA.Infrastructure.Extension;
 using OA.Service;
-using Serilog;
-using System;
-using System.IO;
 
 namespace OA
 {
@@ -16,16 +13,6 @@ namespace OA
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            var configBuilder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile(path: $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: false, reloadOnChange: true)
-                .Build();
-
-            Log.Logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(configBuilder)
-                .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
