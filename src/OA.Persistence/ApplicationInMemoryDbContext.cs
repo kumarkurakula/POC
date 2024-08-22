@@ -29,7 +29,7 @@ namespace OA.Persistence
             return Task.FromResult<IEnumerable<Product>>(list);
         }
 
-        public async Task InitProductInMemoryDb()
+        private async Task InitProductInMemoryDb()
         {
             await ProductsSeedData.Seed(_dbContext).ConfigureAwait(false);
         }

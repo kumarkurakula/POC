@@ -1,8 +1,10 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using OA.Service.Features.ProductsFeatures.Commands;
 using OA.Service.Features.ProductsFeatures.Queries;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace OA.Controllers
@@ -20,15 +22,24 @@ namespace OA.Controllers
         }
 
         [HttpGet]
-        [Route("listproducts")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [Route("allproducts")]
         public async Task<IActionResult> GetAllProducts()
         {
-            return Ok(await _mediator.Send(new GetAllProductsQuery()));
+            var response = await _mediator.Send(new GetAllProductsQuery());
+
+            if (response is null)
+            {
+                return NotFound("Products not found");
+            }
+
+            return Ok(response);
         }
 
         [HttpPost]
-        [Route("AddProducts")]
-        public async Task<IActionResult> PostProducts([FromBody] AddProductCommand request)
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [Route("addproducts")]
+        public async Task<IActionResult> AddProducts([FromBody] AddProductCommand request)
         {
             return Ok(await _mediator.Send(request));
         }
