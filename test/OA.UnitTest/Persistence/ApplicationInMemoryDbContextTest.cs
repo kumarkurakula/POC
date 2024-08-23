@@ -1,6 +1,4 @@
-﻿using OA.Domain.Entities;
-using OA.Persistence;
-using OA.UnitTest.Fixtures;
+﻿using OA.UnitTest.Fixtures;
 
 namespace OA.UnitTest.Persistence
 {

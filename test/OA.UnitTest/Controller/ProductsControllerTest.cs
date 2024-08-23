@@ -1,9 +1,7 @@
 ﻿using FluentAssertions;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
 using OA.Controllers;
-using System.Net;
 
 namespace OA.UnitTest.Controller
 {
