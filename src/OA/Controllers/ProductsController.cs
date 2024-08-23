@@ -27,21 +27,23 @@ namespace OA.Controllers
         public async Task<IActionResult> GetAllProducts()
         {
             var response = await _mediator.Send(new GetAllProductsQuery());
-
-            if (response is null)
-            {
-                return NotFound("Products not found");
-            }
-
             return Ok(response);
         }
 
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [Route("addproducts")]
         public async Task<IActionResult> AddProducts([FromBody] AddProductCommand request)
         {
-            return Ok(await _mediator.Send(request));
+            var response = await _mediator.Send(request);
+
+            if (!response)
+            {
+                return BadRequest();
+            }
+
+            return Ok(response);
         }
     }
 }

@@ -35,6 +35,11 @@ namespace OA.Service.Features.ProductsFeatures.Commands
             };
             var isAdded = await _context.AddProducts(products);
 
+            if (isAdded != 1)
+            {
+                return false;
+            }
+
             return true;
         }
     }

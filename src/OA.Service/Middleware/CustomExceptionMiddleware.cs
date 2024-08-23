@@ -40,19 +40,9 @@ namespace OA.Service.Middleware
 
             switch (exception)
             {
-                case ValidationException validationException:
-                    code = (int)HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(validationException.Failures);
-                    break;
-
                 case BadRequestException badRequestException:
                     code = (int)HttpStatusCode.BadRequest;
                     result = badRequestException.Message;
-                    break;
-
-                case DeleteFailureException deleteFailureException:
-                    code = (int)HttpStatusCode.BadRequest;
-                    result = deleteFailureException.Message;
                     break;
 
                 case NotFoundException:

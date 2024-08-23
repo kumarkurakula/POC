@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OA.Service\OA.Service.csproj" />
+    <ProjectReference Include="..\OA\OA.csproj" />
   </ItemGroup>
 
   <ItemGroup>

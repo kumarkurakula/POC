@@ -15,6 +15,5 @@ namespace OA.Service.Exceptions
            : base(info, context)
         {
         }
-
     }
 }
