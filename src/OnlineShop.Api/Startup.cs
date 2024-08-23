@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OnlineShop.Api.Extension;
+using OnlineShop.Application;
+using OnlineShop.Infrastructure;
 
 namespace OnlineShop.Api
 {
@@ -43,13 +45,11 @@ namespace OnlineShop.Api
         {
             services.AddController();
 
-            services.AddDbContext();
-
-            services.AddScopedServices();
-
             services.AddSwaggerOpenAPI();
 
-            services.AddMediatR();
+            services.AddApplicationServices();
+
+            services.AddInfrastructureServices();
 
             services.AddVersion();
         }

@@ -4,7 +4,7 @@ using OnlineShop.UnitTest.Fixtures;
 using OnlineShop.Application.Features.ProductsFeatures.Commands;
 using OnlineShop.Domain.Entities;
 
-namespace OnlineShop.UnitTest.Service.Features.ProductsFeatures.Commands
+namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Commands
 {
     public class AddProductCommandHandlerTest : IClassFixture<ProductFixtures>
     {

@@ -5,7 +5,7 @@ using OnlineShop.Domain.Entities;
 using OnlineShop.UnitTest.Fixtures;
 using static OnlineShop.Application.Features.ProductsFeatures.Queries.GetAllProductsQuery;
 
-namespace OnlineShop.UnitTest.Service.Features.ProductsFeatures.Queries
+namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Queries
 {
     public class GetAllProductsQueryTest : IClassFixture<ProductFixtures>
     {

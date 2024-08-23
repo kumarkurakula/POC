@@ -27,6 +27,7 @@ namespace OnlineShop.Api.Controllers
         public async Task<IActionResult> GetAllProducts()
         {
             var response = await _mediator.Send(new GetAllProductsQuery());
+            
             return Ok(response);
         }
 

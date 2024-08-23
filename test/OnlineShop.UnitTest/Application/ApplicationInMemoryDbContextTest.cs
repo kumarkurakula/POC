@@ -1,6 +1,6 @@
 ﻿using OnlineShop.UnitTest.Fixtures;
 
-namespace OnlineShop.UnitTest.Persistence
+namespace OnlineShop.UnitTest.Application
 {
     public class ApplicationInMemoryDbContextTest : IClassFixture<InMemoryDbContextFixture>
     {

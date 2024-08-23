@@ -1,10 +1,6 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using OnlineShop.Infrastructure.Persistence;
-using System.Reflection;
 
 namespace OnlineShop.Api.Extension
 {
@@ -13,24 +9,6 @@ namespace OnlineShop.Api.Extension
         public static void AddController(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddControllers().AddNewtonsoftJson();
-        }
-
-        public static void AddDbContext(this IServiceCollection serviceCollection)
-
-        {
-            serviceCollection.AddDbContext<InMemoryDbContext>(options => options.UseInMemoryDatabase("ImMemoryDb"));
-        }
-
-        public static void AddMediatR(this IServiceCollection services)
-        {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-        }
-
-        public static void AddScopedServices(this IServiceCollection serviceCollection)
-        {
-            serviceCollection
-                .AddScoped<InMemoryDbContext>()
-                .AddScoped<IApplicationInMemoryDbContext, ApplicationInMemoryDbContext>();
         }
 
         public static void AddSwaggerOpenAPI(this IServiceCollection serviceCollection)
