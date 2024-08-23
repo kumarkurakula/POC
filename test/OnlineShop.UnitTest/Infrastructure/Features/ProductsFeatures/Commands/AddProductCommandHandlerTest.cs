@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Moq;
-using OnlineShop.UnitTest.Fixtures;
 using OnlineShop.Application.Features.ProductsFeatures.Commands;
 using OnlineShop.Domain.Entities;
+using OnlineShop.UnitTest.Fixtures;
 
 namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Commands
 {
@@ -21,7 +21,7 @@ namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Commands
             var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
             moqApplicationInMemoryDbContext.Setup(x => x.AddProducts(It.IsAny<Product>())).ReturnsAsync(1);
 
-            var productCommandHandler = new AddProductCommandHandler(moqApplicationInMemoryDbContext.Object);
+            var productCommandHandler = new AddProductCommandHandler(moqApplicationInMemoryDbContext.Object, _productFixtures.MoqMapper.Object);
             var response = productCommandHandler.Handle(new AddProductCommand(), default);
 
             response.Should().NotBeNull();
@@ -34,7 +34,7 @@ namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Commands
             var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
             moqApplicationInMemoryDbContext.Setup(x => x.AddProducts(It.IsAny<Product>())).ReturnsAsync(0);
 
-            var productCommandHandler = new AddProductCommandHandler(moqApplicationInMemoryDbContext.Object);
+            var productCommandHandler = new AddProductCommandHandler(moqApplicationInMemoryDbContext.Object, _productFixtures.MoqMapper.Object);
             var response = productCommandHandler.Handle(new AddProductCommand(), default);
 
             response.Should().NotBeNull();

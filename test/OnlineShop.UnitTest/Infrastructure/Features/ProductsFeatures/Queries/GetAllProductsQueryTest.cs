@@ -3,7 +3,6 @@ using Moq;
 using OnlineShop.Application.Features.ProductsFeatures.Queries;
 using OnlineShop.Domain.Entities;
 using OnlineShop.UnitTest.Fixtures;
-using static OnlineShop.Application.Features.ProductsFeatures.Queries.GetAllProductsQuery;
 
 namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Queries
 {

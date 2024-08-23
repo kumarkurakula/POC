@@ -22,6 +22,7 @@ namespace OnlineShop.Persistence.Seeds
                 new()
                 {
                     ProductName = "Milk",
+                    UnitPrice= 200.4m,
                     UnitOfMeasurement = UnitOfMeasurement.Liter,
                     CategoryId = 1001
                 }

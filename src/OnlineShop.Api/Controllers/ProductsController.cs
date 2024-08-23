@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineShop.Application.Features.ProductsFeatures.Commands;
 using OnlineShop.Application.Features.ProductsFeatures.Queries;
+using OnlineShop.Domain.Entities;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -22,12 +24,12 @@ namespace OnlineShop.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         [Route("allproducts")]
         public async Task<IActionResult> GetAllProducts()
         {
             var response = await _mediator.Send(new GetAllProductsQuery());
-            
+
             return Ok(response);
         }
 

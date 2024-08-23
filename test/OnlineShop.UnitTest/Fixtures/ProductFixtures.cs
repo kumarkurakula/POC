@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using AutoMapper;
+using Moq;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Domain.Enum;
 using OnlineShop.Infrastructure.Persistence;
@@ -8,10 +9,13 @@ namespace OnlineShop.UnitTest.Fixtures
     public class ProductFixtures
     {
         public Mock<IApplicationInMemoryDbContext> MoqApplicationInMemoryDbContext;
+        public Mock<IMapper> MoqMapper;
+
 
         public ProductFixtures()
         {
             MoqApplicationInMemoryDbContext = new Mock<IApplicationInMemoryDbContext>();
+            MoqMapper = new Mock<IMapper>();
         }
 
         public IEnumerable<Product> GetProduct()

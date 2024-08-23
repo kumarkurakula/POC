@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using OnlineShop.Application.Exceptions;
 using Serilog;
@@ -13,12 +12,10 @@ namespace OnlineShop.Application.Middleware
     public class CustomExceptionMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ILogger<CustomExceptionMiddleware> _logger;
 
-        public CustomExceptionMiddleware(RequestDelegate next, ILogger<CustomExceptionMiddleware> logger)
+        public CustomExceptionMiddleware(RequestDelegate next)
         {
             _next = next;
-            _logger = logger;
         }
 
         public async Task Invoke(HttpContext context)
@@ -29,11 +26,11 @@ namespace OnlineShop.Application.Middleware
             }
             catch (Exception exceptionObj)
             {
-                await HandleExceptionAsync(context, exceptionObj, _logger);
+                await HandleExceptionAsync(context, exceptionObj);
             }
         }
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception, ILogger<CustomExceptionMiddleware> logger)
+        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             int code;
             var result = exception.Message;
