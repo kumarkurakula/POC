@@ -9,7 +9,8 @@ namespace OnlineShop.Infrastructure.Persistence
         {
         }
 
-        public DbSet<Product> Product { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<OrderDetail> Orders { get; set; }
+        public DbSet<Product> Product { get; set; }
     }
 }

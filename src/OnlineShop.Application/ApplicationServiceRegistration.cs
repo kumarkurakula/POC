@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace OnlineShop.Application
@@ -8,10 +7,9 @@ namespace OnlineShop.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services
+            return services
                 .AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            return services;
         }
     }
 }

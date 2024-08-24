@@ -18,9 +18,7 @@ namespace OnlineShop.UnitTest.Fixtures
             MoqMapper = new Mock<IMapper>();
         }
 
-        public IEnumerable<Product> GetProduct()
-        {
-            return new List<Product>
+        public static IEnumerable<Product> GetProduct() => new List<Product>
             {
                  new()
                 {
@@ -36,6 +34,5 @@ namespace OnlineShop.UnitTest.Fixtures
                     CategoryId = 1001
                 }
             };
-        }
     }
 }

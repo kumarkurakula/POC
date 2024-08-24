@@ -1,6 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using OnlineShop.Application.Features.OrderFeatures.Commands;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace OnlineShop.Api.Controllers
 {
@@ -14,6 +17,14 @@ namespace OnlineShop.Api.Controllers
         public OrderController(IMediator mediator)
         {
             _mediator = mediator ?? HttpContext.RequestServices.GetService<IMediator>();
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<int>> CreateOrder([FromBody] CreateOrderCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
     }
 }

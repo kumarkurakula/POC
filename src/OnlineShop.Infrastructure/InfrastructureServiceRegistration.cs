@@ -8,11 +8,10 @@ namespace OnlineShop.Infrastructure
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
-            services
-                 .AddDbContext<InMemoryDbContext>(options => options.UseInMemoryDatabase("ImMemoryDb"))
+            return services
+                .AddDbContext<InMemoryDbContext>(options => options.UseInMemoryDatabase("ImMemoryDb"))
                 .AddScoped<InMemoryDbContext>()
                 .AddScoped<IApplicationInMemoryDbContext, ApplicationInMemoryDbContext>();
-            return services;
         }
     }
 }

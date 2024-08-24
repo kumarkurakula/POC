@@ -1,10 +1,12 @@
-﻿namespace OnlineShop.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace OnlineShop.Domain.Entities
 {
-    public class OrderDetail
+    public class OrderDetail : BaseEntity
     {
         public int CustomerId { get; set; }
         public int OrderId { get; set; }
-        public Order Orders { get; set; }
-        public Product Product { get; set; }
+
+        public List<Product> Product { get; set; }
     }
 }

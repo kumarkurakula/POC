@@ -7,7 +7,7 @@ namespace OnlineShop.Infrastructure.Persistence
     public interface IApplicationInMemoryDbContext
     {
         Task<IEnumerable<Product>> GetProducts();
-
         Task<int> AddProducts(Product product);
+        Task<int> CreateOrders(OrderDetail orderDetail);
     }
 }

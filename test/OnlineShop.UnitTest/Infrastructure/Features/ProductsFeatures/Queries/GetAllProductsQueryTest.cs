@@ -31,7 +31,7 @@ namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Queries
         public void GetAllProductQueryHandler_Should_Retunr_ListOfProducts_When_ProductsExists()
         {
             var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
-            moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(_productFixtures.GetProduct);
+            moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(ProductFixtures.GetProduct);
             var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);
 
             var products = productQueryHandler?.Handle(new GetAllProductsQuery(), default);

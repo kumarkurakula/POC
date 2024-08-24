@@ -21,6 +21,12 @@ namespace OnlineShop.Infrastructure.Persistence
             return await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<int> CreateOrders(OrderDetail orderDetail)
+        {
+            _dbContext.Orders.AddRange(orderDetail);
+            return await _dbContext.SaveChangesAsync();
+        }
+
         public Task<IEnumerable<Product>> GetProducts()
         {
             _ = InitProductInMemoryDb();

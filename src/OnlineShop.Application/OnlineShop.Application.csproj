@@ -21,4 +21,8 @@
     <ProjectReference Include="..\OnlineShop.Infrastructure\OnlineShop.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\OrderFeatures\Queries\" />
+  </ItemGroup>
+
 </Project>

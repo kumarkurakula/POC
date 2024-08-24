@@ -2,6 +2,7 @@
 using MediatR;
 using Moq;
 using OnlineShop.Api.Controllers;
+using OnlineShop.Application.Features.ProductsFeatures.Commands;
 
 namespace OnlineShop.UnitTest.Controller
 {
@@ -27,6 +28,14 @@ namespace OnlineShop.UnitTest.Controller
         {
             var productsController = new ProductsController(_moqMediator.Object);
             var response = await productsController.GetAllProducts();
+            response.Should().NotBeNull();
+        }
+
+        [Fact]
+        public async Task ProductsController_Should_Return_BadRequest_When_ResponseIsNullOrEmpty()
+        {
+            var productsController = new ProductsController(_moqMediator.Object);
+            var response = await productsController.AddProducts(new AddProductCommand());
             response.Should().NotBeNull();
         }
     }
