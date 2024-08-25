@@ -4,13 +4,13 @@ using OnlineShop.Application.Features.ProductsFeatures.Commands;
 using OnlineShop.Domain.Entities;
 using OnlineShop.UnitTest.Fixtures;
 
-namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Commands
+namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Commands
 {
-    public class AddProductCommandHandlerTest : IClassFixture<ProductFixtures>
+    public class AddProductCommandHandlerTest : IClassFixture<ApplicationFixture>
     {
-        private readonly ProductFixtures _productFixtures;
+        private readonly ApplicationFixture _productFixtures;
 
-        public AddProductCommandHandlerTest(ProductFixtures productFixtures)
+        public AddProductCommandHandlerTest(ApplicationFixture productFixtures)
         {
             _productFixtures = productFixtures;
         }

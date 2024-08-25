@@ -4,13 +4,13 @@ using OnlineShop.Application.Features.ProductsFeatures.Queries;
 using OnlineShop.Domain.Entities;
 using OnlineShop.UnitTest.Fixtures;
 
-namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Queries
+namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Queries
 {
-    public class GetAllProductsQueryTest : IClassFixture<ProductFixtures>
+    public class GetAllProductsQueryTest : IClassFixture<ApplicationFixture>
     {
-        private readonly ProductFixtures _productFixtures;
+        private readonly ApplicationFixture _productFixtures;
 
-        public GetAllProductsQueryTest(ProductFixtures productFixtures)
+        public GetAllProductsQueryTest(ApplicationFixture productFixtures)
         {
             _productFixtures = productFixtures;
         }
@@ -31,7 +31,7 @@ namespace OnlineShop.UnitTest.Infrastructure.Features.ProductsFeatures.Queries
         public void GetAllProductQueryHandler_Should_Retunr_ListOfProducts_When_ProductsExists()
         {
             var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
-            moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(ProductFixtures.GetProduct);
+            moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(ApplicationFixture.GetProduct);
             var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);
 
             var products = productQueryHandler?.Handle(new GetAllProductsQuery(), default);

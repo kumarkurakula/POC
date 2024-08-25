@@ -24,6 +24,10 @@ namespace OnlineShop.Api.Controllers
         public async Task<ActionResult<int>> CreateOrder([FromBody] CreateOrderCommand command)
         {
             var result = await _mediator.Send(command);
+            if (!result)
+            {
+                return BadRequest();
+            }
             return Ok(result);
         }
     }

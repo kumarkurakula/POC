@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
+using OnlineShop.Application.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
-using OnlineShop.Infrastructure.Persistence;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace OnlineShop.Application.Features.OrderFeatures.Commands
 {
@@ -22,14 +22,14 @@ namespace OnlineShop.Application.Features.OrderFeatures.Commands
         {
             var orders = _mapper.Map<OrderDetail>(request);
 
-            var isAdded = await _context.CreateOrders(orders);
+            var isAdded = await _context.CreateOrders(orders).ConfigureAwait(false);
 
-            if (isAdded != 1)
+            if (isAdded >= 1)
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
     }
 }

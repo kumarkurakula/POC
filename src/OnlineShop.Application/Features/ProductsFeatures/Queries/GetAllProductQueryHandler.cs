@@ -1,6 +1,6 @@
 ﻿using MediatR;
+using OnlineShop.Application.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
-using OnlineShop.Infrastructure.Persistence;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -19,7 +19,7 @@ namespace OnlineShop.Application.Features.ProductsFeatures.Queries
 
         public async Task<IEnumerable<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var lstProducts = await _context.GetProducts();
+            var lstProducts = await _context.GetProducts().ConfigureAwait(false);
 
             return lstProducts is null
                 ? Enumerable.Empty<Product>()

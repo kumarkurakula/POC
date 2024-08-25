@@ -1,4 +1,5 @@
-﻿using OnlineShop.Domain.Entities;
+﻿using OnlineShop.Application.Contracts.Persistence;
+using OnlineShop.Domain.Entities;
 using OnlineShop.Persistence.Seeds;
 using System.Collections.Generic;
 using System.Linq;

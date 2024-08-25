@@ -1,18 +1,17 @@
 ﻿using AutoMapper;
 using Moq;
+using OnlineShop.Application.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Domain.Enum;
-using OnlineShop.Infrastructure.Persistence;
 
 namespace OnlineShop.UnitTest.Fixtures
 {
-    public class ProductFixtures
+    public class ApplicationFixture
     {
         public Mock<IApplicationInMemoryDbContext> MoqApplicationInMemoryDbContext;
         public Mock<IMapper> MoqMapper;
 
-
-        public ProductFixtures()
+        public ApplicationFixture()
         {
             MoqApplicationInMemoryDbContext = new Mock<IApplicationInMemoryDbContext>();
             MoqMapper = new Mock<IMapper>();

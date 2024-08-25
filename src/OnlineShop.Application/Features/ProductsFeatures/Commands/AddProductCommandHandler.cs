@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
+using OnlineShop.Application.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
-using OnlineShop.Infrastructure.Persistence;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,7 +22,7 @@ namespace OnlineShop.Application.Features.ProductsFeatures.Commands
         {
             var products = _mapper.Map<Product>(request);
 
-            var isAdded = await _context.AddProducts(products);
+            var isAdded = await _context.AddProducts(products).ConfigureAwait(false);
 
             if (isAdded != 1)
             {
