@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Application.Middleware
+namespace OnlineShop.Api.Middleware
 {
     public class CustomExceptionMiddleware
     {
@@ -18,7 +18,7 @@ namespace OnlineShop.Application.Middleware
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context)
         {
             try
             {

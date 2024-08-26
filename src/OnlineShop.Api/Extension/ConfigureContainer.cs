@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using OnlineShop.Application.Middleware;
+using OnlineShop.Api.Middleware;
 
 namespace OnlineShop.Api.Extension
 {

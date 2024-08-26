@@ -4,7 +4,7 @@ using Moq;
 using OnlineShop.Api.Controllers;
 using OnlineShop.Application.Features.OrderFeatures.Commands;
 
-namespace OnlineShop.UnitTest.Controller
+namespace OnlineShop.UnitTest.Api.Controller
 {
     public class OrdersControllerTest
     {

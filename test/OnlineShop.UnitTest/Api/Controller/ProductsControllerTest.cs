@@ -5,7 +5,7 @@ using OnlineShop.Api.Controllers;
 using OnlineShop.Application.Features.ProductsFeatures.Commands;
 using OnlineShop.Application.Features.ProductsFeatures.Queries;
 
-namespace OnlineShop.UnitTest.Controller
+namespace OnlineShop.UnitTest.Api.Controller
 {
     public class ProductsControllerTest
     {
