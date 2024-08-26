@@ -20,8 +20,8 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Queries
         {
             var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
             moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(Enumerable.Empty<Product>());
-            var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);
 
+            var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);
             var products = productQueryHandler?.Handle(new GetAllProductsQuery(), default);
 
             products!.Result.Count().Should().NotBe(1);
@@ -32,8 +32,8 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Queries
         {
             var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
             moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(ApplicationFixture.GetProduct);
-            var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);
 
+            var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);
             var products = productQueryHandler?.Handle(new GetAllProductsQuery(), default);
 
             products!.Result.Count().Should().BeGreaterThan(1);

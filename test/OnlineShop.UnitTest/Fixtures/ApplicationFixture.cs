@@ -3,9 +3,11 @@ using Moq;
 using OnlineShop.Application.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Domain.Enum;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OnlineShop.UnitTest.Fixtures
 {
+    [ExcludeFromCodeCoverage]
     public class ApplicationFixture
     {
         public Mock<IApplicationInMemoryDbContext> MoqApplicationInMemoryDbContext;
