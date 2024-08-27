@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using AutoFixture;
+using FluentAssertions;
 using Moq;
 using OnlineShop.Application.Features.ProductsFeatures.Queries;
 using OnlineShop.Domain.Entities;
@@ -8,17 +9,18 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Queries
 {
     public class GetAllProductsQueryTest : IClassFixture<ApplicationFixture>
     {
-        private readonly ApplicationFixture _productFixtures;
+        private readonly ApplicationFixture _fixtures;
 
         public GetAllProductsQueryTest(ApplicationFixture productFixtures)
         {
-            _productFixtures = productFixtures;
+            _fixtures = productFixtures;
         }
 
         [Fact]
         public void GetAllProductQueryHandler_Should_Retunr_Empty_Products_When_ProductsNotExists()
         {
-            var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
+            var createOrderCommand = _fixtures.Fixture.Create<GetAllProductsQuery>();
+            var moqApplicationInMemoryDbContext = _fixtures.MoqApplicationInMemoryDbContext;
             moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(Enumerable.Empty<Product>());
 
             var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);
@@ -30,7 +32,8 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Queries
         [Fact]
         public void GetAllProductQueryHandler_Should_Retunr_ListOfProducts_When_ProductsExists()
         {
-            var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
+            var createOrderCommand = _fixtures.Fixture.Create<GetAllProductsQuery>();
+            var moqApplicationInMemoryDbContext = _fixtures.MoqApplicationInMemoryDbContext;
             moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(ApplicationFixture.GetProduct);
 
             var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);

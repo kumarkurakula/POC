@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using OnlineShop.Domain;
 using OnlineShop.Domain.Entities;
 using System.Collections.Generic;
 

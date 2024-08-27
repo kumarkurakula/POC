@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using AutoFixture;
+using FluentAssertions;
 using Moq;
 using OnlineShop.Application.Features.ProductsFeatures.Commands;
 using OnlineShop.Domain.Entities;
@@ -8,21 +9,22 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Commands
 {
     public class AddProductCommandHandlerTest : IClassFixture<ApplicationFixture>
     {
-        private readonly ApplicationFixture _productFixtures;
+        private readonly ApplicationFixture _fixtures;
 
-        public AddProductCommandHandlerTest(ApplicationFixture productFixtures)
+        public AddProductCommandHandlerTest(ApplicationFixture fixtures)
         {
-            _productFixtures = productFixtures;
+            _fixtures = fixtures;
         }
 
         [Fact]
         public void AddProductCommandHandler_Should_Save_NewProducts_When_PrductsIsNotNullOrEmpty()
         {
-            var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
+            var createOrderCommand = _fixtures.Fixture.Create<AddProductCommand>();
+            var moqApplicationInMemoryDbContext = _fixtures.MoqApplicationInMemoryDbContext;
             moqApplicationInMemoryDbContext.Setup(x => x.AddProducts(It.IsAny<Product>())).ReturnsAsync(1);
 
-            var productCommandHandler = new AddProductCommandHandler(moqApplicationInMemoryDbContext.Object, _productFixtures.MoqMapper.Object);
-            var response = productCommandHandler.Handle(new AddProductCommand(), default);
+            var productCommandHandler = new AddProductCommandHandler(moqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
+            var response = productCommandHandler.Handle(createOrderCommand, default);
 
             response.Should().NotBeNull();
             response.Result.Should().BeTrue();
@@ -31,11 +33,12 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Commands
         [Fact]
         public void AddProductCommandHandler_Should_Save_NewProducts_When_PrductsIsNullOrEmpty()
         {
-            var moqApplicationInMemoryDbContext = _productFixtures.MoqApplicationInMemoryDbContext;
+            var createOrderCommand = _fixtures.Fixture.Create<AddProductCommand>();
+            var moqApplicationInMemoryDbContext = _fixtures.MoqApplicationInMemoryDbContext;
             moqApplicationInMemoryDbContext.Setup(x => x.AddProducts(It.IsAny<Product>())).ReturnsAsync(0);
 
-            var productCommandHandler = new AddProductCommandHandler(moqApplicationInMemoryDbContext.Object, _productFixtures.MoqMapper.Object);
-            var response = productCommandHandler.Handle(new AddProductCommand(), default);
+            var productCommandHandler = new AddProductCommandHandler(moqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
+            var response = productCommandHandler.Handle(createOrderCommand, default);
 
             response.Should().NotBeNull();
             response.Result.Should().BeFalse();
