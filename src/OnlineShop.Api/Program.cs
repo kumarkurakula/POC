@@ -4,10 +4,12 @@ using Microsoft.Extensions.Hosting;
 using OnlineShop.Domain;
 using Serilog;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace OnlineShop.Api
 {
+    [ExcludeFromCodeCoverage]
     public class Program
     {
         public static void Main(string[] args)

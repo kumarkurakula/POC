@@ -6,9 +6,12 @@ using Microsoft.Extensions.Hosting;
 using OnlineShop.Api.Extension;
 using OnlineShop.Application;
 using OnlineShop.Infrastructure;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OnlineShop.Api
 {
+
+    [ExcludeFromCodeCoverage]
     public class Startup
     {
         public Startup(IConfiguration configuration)
