@@ -1,8 +1,10 @@
 ﻿using FluentAssertions;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using OnlineShop.Api.Controllers;
 using OnlineShop.Application.Features.OrderFeatures.Commands;
+using System.Net;
 
 namespace OnlineShop.UnitTest.Api.Controller
 {
@@ -22,7 +24,10 @@ namespace OnlineShop.UnitTest.Api.Controller
 
             var response = await orderController.CreateOrder(new CreateOrderCommand());
 
+            var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();
+            result.StatusCode.Should().Be((int)HttpStatusCode.OK);
+
             _moqMediator.Verify(x => x.Send(It.IsAny<CreateOrderCommand>(), It.IsAny<CancellationToken>()));
         }
 
@@ -34,7 +39,10 @@ namespace OnlineShop.UnitTest.Api.Controller
 
             var response = await orderController.CreateOrder(new CreateOrderCommand());
 
+            var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();
+            result.StatusCode.Should().Be((int)HttpStatusCode.OK);
+
             _moqMediator.Verify(x => x.Send(It.IsAny<CreateOrderCommand>(), It.IsAny<CancellationToken>()));
         }
     }

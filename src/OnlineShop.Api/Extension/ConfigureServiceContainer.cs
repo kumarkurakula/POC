@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OnlineShop.Api.Extension
 {
+
+    [ExcludeFromCodeCoverage]
     public static class ConfigureServiceContainer
     {
         public static void AddController(this IServiceCollection serviceCollection)

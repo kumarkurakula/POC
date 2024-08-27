@@ -26,10 +26,9 @@ namespace OnlineShop.Api.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         [Route("allproducts")]
-        public async Task<IActionResult> GetAllProducts()
+        public async Task<ActionResult> GetAllProducts()
         {
             var response = await _mediator.Send(new GetAllProductsQuery());
-
             return Ok(response);
         }
 
@@ -37,15 +36,9 @@ namespace OnlineShop.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [Route("addproducts")]
-        public async Task<IActionResult> AddProducts([FromBody] AddProductCommand request)
+        public async Task<ActionResult> AddProducts([FromBody] AddProductCommand request)
         {
             var response = await _mediator.Send(request);
-
-            if (!response)
-            {
-                return BadRequest();
-            }
-
             return Ok(response);
         }
     }

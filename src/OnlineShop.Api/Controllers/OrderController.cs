@@ -21,13 +21,9 @@ namespace OnlineShop.Api.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<int>> CreateOrder([FromBody] CreateOrderCommand command)
+        public async Task<ActionResult> CreateOrder([FromBody] CreateOrderCommand command)
         {
             var result = await _mediator.Send(command);
-            if (!result)
-            {
-                return BadRequest();
-            }
             return Ok(result);
         }
     }

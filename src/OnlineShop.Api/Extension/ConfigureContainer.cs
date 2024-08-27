@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using OnlineShop.Api.Middleware;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OnlineShop.Api.Extension
 {
+
+    [ExcludeFromCodeCoverage]
     public static class ConfigureContainer
     {
         internal static void ConfigureCustomExceptionMiddleware(this IApplicationBuilder app)
