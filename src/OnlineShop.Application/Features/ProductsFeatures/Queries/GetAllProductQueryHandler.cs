@@ -21,9 +21,9 @@ namespace OnlineShop.Application.Features.ProductsFeatures.Queries
         {
             var lstProducts = await _context.GetProducts().ConfigureAwait(false);
 
-            return lstProducts is null
-                ? Enumerable.Empty<Product>()
-                : lstProducts;
+            return lstProducts.Any()
+                ? lstProducts
+                : Enumerable.Empty<Product>();
         }
     }
 }
