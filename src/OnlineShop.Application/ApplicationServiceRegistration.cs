@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using OnlineShop.Application.Behaviors;
 using System.Reflection;
 
 namespace OnlineShop.Application
@@ -9,6 +11,7 @@ namespace OnlineShop.Application
         {
             return services
                 .AddAutoMapper(Assembly.GetExecutingAssembly())
+                .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>))
                 .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         }
     }
