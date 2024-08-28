@@ -22,21 +22,11 @@ namespace OnlineShop.UnitTest.Infrastructure
         public async Task ApplicationInMemoryDbContext_Should_AddProducts_When_Products_IsNullOrEmpty()
         {
             var context = new ApplicationInMemoryDbContext(inMemoryDbContext);
-           
-            var response = await context.AddProducts(new Product()).ConfigureAwait(false);
-            
-            response.Should().NotBe(null);
-        }
 
-        [Fact]
-        public async Task ApplicationInMemoryDbContext_Should_GetProducts_()
-        {
-            var context = new ApplicationInMemoryDbContext(inMemoryDbContext);
-            
-            var response = await context.GetProducts().ConfigureAwait(false);
-            
-            response.Should().NotBeEmpty();
-            response.Count().Should().BeGreaterThanOrEqualTo(1);
+            var response = await context.AddProducts(new Product()).ConfigureAwait(false);
+
+            response.Should().NotBe(null);
+            response.Should().BeGreaterThanOrEqualTo(1);
         }
 
         [Fact]
@@ -47,10 +37,20 @@ namespace OnlineShop.UnitTest.Infrastructure
 
             var context = new ApplicationInMemoryDbContext(inMemoryDbContext);
 
-            
             var response = await context.CreateOrders(orderDetails).ConfigureAwait(false);
-            
+
             response.Should().NotBe(null);
+        }
+
+        [Fact]
+        public async Task ApplicationInMemoryDbContext_Should_GetProducts()
+        {
+            var context = new ApplicationInMemoryDbContext(inMemoryDbContext);
+
+            var response = await context.GetProducts().ConfigureAwait(false);
+
+            response.Should().NotBeEmpty();
+            response.Count().Should().BeGreaterThanOrEqualTo(1);
         }
     }
 }

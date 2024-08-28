@@ -17,13 +17,69 @@ namespace OnlineShop.Persistence.Seeds
                     ProductName = "Apple",
                     UnitPrice= 200.45m,
                     UnitOfMeasurement = UnitOfMeasurement.Unity,
+                    CategoryId = 100,
+                },
+                new()
+                {
+                    ProductName = "Avocados",
+                    UnitPrice= 400.4m,
+                    UnitOfMeasurement = UnitOfMeasurement.Liter,
+                    CategoryId = 100
+                },
+                 new()
+                {
+                    ProductName = "Bananas",
+                    UnitPrice= 300.45m,
+                    UnitOfMeasurement = UnitOfMeasurement.Unity,
+                    CategoryId = 100,
+                },
+                new()
+                {
+                    ProductName = "Berries",
+                    UnitPrice= 20.4m,
+                    UnitOfMeasurement = UnitOfMeasurement.Unity,
+                    CategoryId = 1001
+                },
+                 new()
+                {
+                    ProductName = "Cherries",
+                    UnitPrice= 200.45m,
+                    UnitOfMeasurement = UnitOfMeasurement.Unity,
                     CategoryId = 101,
+                },
+                new()
+                {
+                    ProductName = "Beets",
+                    UnitPrice= 20.4m,
+                    UnitOfMeasurement = UnitOfMeasurement.Kilogram,
+                    CategoryId = 100
+                },
+                 new()
+                {
+                    ProductName = "Cabbage",
+                    UnitPrice= 200.45m,
+                    UnitOfMeasurement = UnitOfMeasurement.Kilogram,
+                    CategoryId = 100,
                 },
                 new()
                 {
                     ProductName = "Milk",
                     UnitPrice= 200.4m,
                     UnitOfMeasurement = UnitOfMeasurement.Liter,
+                    CategoryId = 1001
+                },
+                 new()
+                {
+                    ProductName = "Honey",
+                    UnitPrice= 200.4m,
+                    UnitOfMeasurement = UnitOfMeasurement.Gram,
+                    CategoryId = 1001
+                },
+                  new()
+                {
+                    ProductName = "Black pepper",
+                    UnitPrice= 200.4m,
+                    UnitOfMeasurement = UnitOfMeasurement.Milligram,
                     CategoryId = 1001
                 }
             };

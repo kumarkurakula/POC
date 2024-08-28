@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using OnlineShop.Api.Middleware;
 using OnlineShop.Application.Exceptions;
 using OnlineShop.UnitTest.Fixtures;
+using System.Net.Mime;
 using System.Net;
 
 namespace OnlineShop.UnitTest.Api.Middleware
@@ -49,6 +50,7 @@ namespace OnlineShop.UnitTest.Api.Middleware
             await middleware.InvokeAsync(context);
 
             context.Response.StatusCode.Should().Be((int)HttpStatusCode.BadRequest);
+            context.Response.ContentType.Should().Be(MediaTypeNames.Application.Json);
         }
 
         [Fact]
@@ -63,6 +65,7 @@ namespace OnlineShop.UnitTest.Api.Middleware
             await middleware.InvokeAsync(context);
 
             context.Response.StatusCode.Should().Be((int)HttpStatusCode.InternalServerError);
+            context.Response.ContentType.Should().Be(MediaTypeNames.Application.Json);
         }
 
         [Fact]
@@ -77,6 +80,7 @@ namespace OnlineShop.UnitTest.Api.Middleware
             await middleware.InvokeAsync(context);
 
             context.Response.StatusCode.Should().Be((int)HttpStatusCode.NotFound);
+            context.Response.ContentType.Should().Be(MediaTypeNames.Application.Json);
         }
     }
 }
