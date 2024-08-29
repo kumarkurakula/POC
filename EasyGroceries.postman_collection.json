@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "c814bf1a-3818-4e85-bb4b-bb259b247158",
+		"name": "EasyGroceries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37827851"
+	},
+	"item": [
+		{
+			"name": "ProductsList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44356/api/v1/Products/allproducts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44356",
+					"path": [
+						"api",
+						"v1",
+						"Products",
+						"allproducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddProducts",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCategory",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "AllCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44356/api/v1/Category/allcategory",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44356",
+					"path": [
+						"api",
+						"v1",
+						"Category",
+						"allcategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Oder",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localurl",
+			"value": "https://localhost:44356/",
+			"type": "string"
+		}
+	]
+}
