@@ -30,7 +30,7 @@ namespace OnlineShop.UnitTest.Api.Controller
             var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();
             result.StatusCode.Should().Be((int)HttpStatusCode.OK);
-           
+
             _moqMediator.Verify(x => x.Send(It.IsAny<GetAllCategoryQuery>(), It.IsAny<CancellationToken>()));
         }
 

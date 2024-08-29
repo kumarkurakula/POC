@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 using OnlineShop.Application.Features.CategoryFeature.Commands;
 using OnlineShop.Application.Features.CategoryFeature.Queries;
 using OnlineShop.Domain.Entities;
@@ -19,7 +18,7 @@ namespace OnlineShop.Api.Controllers
 
         public CategoryController(IMediator mediator)
         {
-            _mediator = mediator ?? HttpContext.RequestServices.GetService<IMediator>();
+            _mediator = mediator;
         }
 
         [HttpPost]

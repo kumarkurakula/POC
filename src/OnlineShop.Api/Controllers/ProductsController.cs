@@ -1,7 +1,5 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 using OnlineShop.Application.Features.ProductsFeatures.Commands;
 using OnlineShop.Application.Features.ProductsFeatures.Queries;
 using OnlineShop.Domain.Entities;
@@ -20,7 +18,7 @@ namespace OnlineShop.Api.Controllers
 
         public ProductsController(IMediator mediator)
         {
-            _mediator = mediator ?? HttpContext.RequestServices.GetService<IMediator>();
+            _mediator = mediator;
         }
 
         [HttpGet]
