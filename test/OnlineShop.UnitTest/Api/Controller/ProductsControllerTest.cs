@@ -35,7 +35,10 @@ namespace OnlineShop.UnitTest.Api.Controller
 
             var response = await productsController.GetAllProducts();
 
+            var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();
+            result.StatusCode.Should().Be((int)HttpStatusCode.OK);
+            
             _moqMediator.Verify(x => x.Send(It.IsAny<GetAllProductsQuery>(), It.IsAny<CancellationToken>()));
         }
 

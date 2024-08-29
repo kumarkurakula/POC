@@ -10,38 +10,40 @@ namespace OnlineShop.UnitTest.Application.Features.OrderFeatures
     public class CreateOrderCommandHandlerTest : IClassFixture<ApplicationFixture>
     {
         private readonly ApplicationFixture _fixtures;
+        private readonly CreateOrderCommand _createOrderCommand;
 
-        public CreateOrderCommandHandlerTest(ApplicationFixture productFixtures)
+        public CreateOrderCommandHandlerTest(ApplicationFixture fixtures)
         {
-            _fixtures = productFixtures;
+            _fixtures = fixtures;
+            _createOrderCommand = _fixtures.Fixture.Create<CreateOrderCommand>();
         }
 
         [Fact]
         public void CreateOrderCommandHandlerTest_Should_Save_NewOrders_When_OrdersIsNotNullOrEmpty()
         {
-            var createOrderCommand = _fixtures.Fixture.Create<CreateOrderCommand>();
-            var moqApplicationInMemoryDbContext = _fixtures.MoqApplicationInMemoryDbContext;
-            moqApplicationInMemoryDbContext.Setup(x => x.CreateOrders(It.IsAny<OrderDetail>())).ReturnsAsync(1);
+            _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.CreateOrders(It.IsAny<OrderDetail>())).ReturnsAsync(1);
 
-            var productCommandHandler = new CreateOrderCommandHandler(moqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
-            var response = productCommandHandler.Handle(createOrderCommand, default);
+            var productCommandHandler = new CreateOrderCommandHandler(_fixtures.MoqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
+            var response = productCommandHandler.Handle(_createOrderCommand, default);
 
             response.Should().NotBeNull();
             response.Result.Should().BeTrue();
+
+            _fixtures.MoqApplicationInMemoryDbContext.Verify(x => x.CreateOrders(It.IsAny<OrderDetail>()));
         }
 
         [Fact]
         public void CreateOrderCommandHandlerTest_Should_Save_NewOrders_When_OrdersNullOrEmpty()
         {
-            var createOrderCommand = _fixtures.Fixture.Create<CreateOrderCommand>();
-            var moqApplicationInMemoryDbContext = _fixtures.MoqApplicationInMemoryDbContext;
-            moqApplicationInMemoryDbContext.Setup(x => x.CreateOrders(It.IsAny<OrderDetail>())).ReturnsAsync(0);
+            _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.CreateOrders(It.IsAny<OrderDetail>())).ReturnsAsync(0);
 
-            var productCommandHandler = new CreateOrderCommandHandler(moqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
-            var response = productCommandHandler.Handle(createOrderCommand, default);
+            var productCommandHandler = new CreateOrderCommandHandler(_fixtures.MoqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
+            var response = productCommandHandler.Handle(_createOrderCommand, default);
 
             response.Should().NotBeNull();
             response.Result.Should().BeFalse();
+
+            _fixtures.MoqApplicationInMemoryDbContext.Verify(x => x.CreateOrders(It.IsAny<OrderDetail>()));
         }
     }
 }

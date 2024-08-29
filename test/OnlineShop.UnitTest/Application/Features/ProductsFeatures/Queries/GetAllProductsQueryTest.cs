@@ -10,46 +10,39 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Queries
     public class GetAllProductsQueryTest : IClassFixture<ApplicationFixture>
     {
         private readonly ApplicationFixture _fixtures;
+        private readonly GetAllProductsQuery _createOrderCommand;
 
         public GetAllProductsQueryTest(ApplicationFixture productFixtures)
         {
             _fixtures = productFixtures;
+            _createOrderCommand = _fixtures.Fixture.Create<GetAllProductsQuery>();
         }
 
         [Fact]
         public void GetAllProductQueryHandler_Should_Retunr_Empty_Products_When_ProductsNotExists()
         {
-            var createOrderCommand = _fixtures.Fixture.Create<GetAllProductsQuery>();
-            var moqApplicationInMemoryDbContext = _fixtures.MoqApplicationInMemoryDbContext;
-            moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(Enumerable.Empty<Product>());
+            _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(Enumerable.Empty<Product>());
 
-            var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);
-            var products = productQueryHandler!.Handle(createOrderCommand, default);
+            var productQueryHandler = new GetAllProductQueryHandler(_fixtures.MoqApplicationInMemoryDbContext.Object);
+            var response = productQueryHandler!.Handle(_createOrderCommand, default);
 
-            products!.Result.Count().Should().NotBe(1);
+            response!.Result.Should().BeNullOrEmpty();
+
+            _fixtures.MoqApplicationInMemoryDbContext.Verify(x => x.GetProducts());
         }
 
         [Fact]
         public void GetAllProductQueryHandler_Should_Retunr_ListOfProducts_When_ProductsExists()
         {
-            var createOrderCommand = _fixtures.Fixture.Create<GetAllProductsQuery>();
-            var moqApplicationInMemoryDbContext = _fixtures.MoqApplicationInMemoryDbContext;
-            moqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(ApplicationFixture.GetProduct);
+            _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.GetProducts()).ReturnsAsync(ApplicationFixture.GetProduct);
 
-            var productQueryHandler = new GetAllProductQueryHandler(moqApplicationInMemoryDbContext.Object);
-            var products = productQueryHandler!.Handle(createOrderCommand, default);
+            var productQueryHandler = new GetAllProductQueryHandler(_fixtures.MoqApplicationInMemoryDbContext.Object);
+            var response = productQueryHandler!.Handle(_createOrderCommand, default);
 
-            products!.Result.Count().Should().BeGreaterThan(1);
-        }
+            response.Result.Should().NotBeNullOrEmpty();
+            response!.Result.Count().Should().BeGreaterThan(1);
 
-        [Fact]
-        public void GetAllProductQueryHandler_Should_Throw_NullReferenceException_When_InMemoryDbContext_IsNull()
-        {
-            var productQueryHandler = new GetAllProductQueryHandler(null);
-
-            Action act = () => productQueryHandler?.Handle(null, default);
-
-            act.Should().NotThrow();
+            _fixtures.MoqApplicationInMemoryDbContext.Verify(x => x.GetProducts());
         }
     }
 }

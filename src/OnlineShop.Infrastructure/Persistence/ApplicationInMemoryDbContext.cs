@@ -1,8 +1,8 @@
-﻿using OnlineShop.Application.Contracts.Persistence;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineShop.Application.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Persistence.Seeds;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace OnlineShop.Infrastructure.Persistence
@@ -28,17 +28,35 @@ namespace OnlineShop.Infrastructure.Persistence
             return await _dbContext.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Product>> GetProducts()
+        public async Task<int> CreateCategory(Category category)
+        {
+            _dbContext.Category.AddRange(category);
+            return await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Product>> GetProducts()
         {
             _ = InitProductInMemoryDb();
 
-            var list = _dbContext.Product.ToList();
-            return Task.FromResult<IEnumerable<Product>>(list);
+            var list = await _dbContext.Product.ToListAsync();
+            return list;
+        }
+
+        public async Task<IEnumerable<Category>> GetCateroy()
+        {
+            _ = InitCategoryInMemoryDb();
+
+            var list = await _dbContext.Category.ToListAsync();
+            return list;
         }
 
         private async Task InitProductInMemoryDb()
         {
-            await ProductsSeedData.Seed(_dbContext).ConfigureAwait(false);
+            await SeedData.Seed(_dbContext).ConfigureAwait(false);
+        }
+        private async Task InitCategoryInMemoryDb()
+        {
+            await SeedData.CategorySeed(_dbContext).ConfigureAwait(false);
         }
     }
 }
