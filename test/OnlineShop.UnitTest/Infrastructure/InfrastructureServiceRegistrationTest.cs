@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using OnlineShop.Application.Contracts.Persistence;
+using OnlineShop.Domain.Contracts.Persistence;
 using OnlineShop.Infrastructure;
 using OnlineShop.Infrastructure.Persistence;
 

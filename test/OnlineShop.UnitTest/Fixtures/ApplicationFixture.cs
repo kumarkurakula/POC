@@ -3,7 +3,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using OnlineShop.Application.Contracts.Persistence;
+using OnlineShop.Domain.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Domain.Enum;
 using OnlineShop.Infrastructure.Persistence;

@@ -1,11 +1,10 @@
 ﻿using MediatR;
-using OnlineShop.Application.Contracts.Persistence;
-using OnlineShop.Application.Features.ProductsFeatures.Queries;
+using OnlineShop.Domain.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace OnlineShop.Application.Features.CategoryFeature.Queries
 {
@@ -26,6 +25,5 @@ namespace OnlineShop.Application.Features.CategoryFeature.Queries
                 ? lstCategory
                 : Enumerable.Empty<Category>();
         }
-
     }
 }

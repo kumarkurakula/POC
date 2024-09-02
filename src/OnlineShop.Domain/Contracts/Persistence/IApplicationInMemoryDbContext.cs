@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Application.Contracts.Persistence
+namespace OnlineShop.Domain.Contracts.Persistence
 {
     public interface IApplicationInMemoryDbContext
     {

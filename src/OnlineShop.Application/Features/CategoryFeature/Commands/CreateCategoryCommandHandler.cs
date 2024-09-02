@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using OnlineShop.Application.Contracts.Persistence;
+using OnlineShop.Domain.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;

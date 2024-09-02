@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OnlineShop.Application.Contracts.Persistence;
+using OnlineShop.Domain.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
 using OnlineShop.Persistence.Seeds;
 using System.Collections.Generic;
@@ -54,6 +54,7 @@ namespace OnlineShop.Infrastructure.Persistence
         {
             await SeedData.Seed(_dbContext).ConfigureAwait(false);
         }
+
         private async Task InitCategoryInMemoryDb()
         {
             await SeedData.CategorySeed(_dbContext).ConfigureAwait(false);

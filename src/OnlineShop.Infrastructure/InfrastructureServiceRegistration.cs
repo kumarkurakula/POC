@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using OnlineShop.Application.Contracts.Persistence;
+using OnlineShop.Domain.Contracts.Persistence;
 using OnlineShop.Infrastructure.Persistence;
 
 namespace OnlineShop.Infrastructure
