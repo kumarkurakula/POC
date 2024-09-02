@@ -23,7 +23,7 @@ namespace OnlineShop.UnitTest.Api.Controller
         {
             var productsController = new ProductsController(_moqMediator.Object);
 
-            var response = await productsController.AddProducts(null);
+            var response = await productsController.Add(null);
 
             response.Should().NotBeNull();
         }
@@ -48,7 +48,7 @@ namespace OnlineShop.UnitTest.Api.Controller
             var productsController = new ProductsController(_moqMediator.Object);
             _moqMediator.Setup(m => m.Send(It.IsAny<AddProductCommand>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
-            var response = await productsController.AddProducts(new AddProductCommand());
+            var response = await productsController.Add(new AddProductCommand());
 
             var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();

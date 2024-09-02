@@ -22,7 +22,7 @@ namespace OnlineShop.UnitTest.Api.Controller
         {
             var orderController = new OrderController(_moqMediator.Object);
 
-            var response = await orderController.CreateOrder(new CreateOrderCommand());
+            var response = await orderController.Create(new CreateOrderCommand());
 
             var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();
@@ -37,7 +37,7 @@ namespace OnlineShop.UnitTest.Api.Controller
             var orderController = new OrderController(_moqMediator.Object);
             _moqMediator.Setup(m => m.Send(It.IsAny<CreateOrderCommand>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
-            var response = await orderController.CreateOrder(new CreateOrderCommand());
+            var response = await orderController.Create(new CreateOrderCommand());
 
             var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();

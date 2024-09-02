@@ -23,7 +23,7 @@ namespace OnlineShop.Api.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult> CreateCategory([FromBody] CreateCategoryCommand command)
+        public async Task<ActionResult> Create([FromBody] CreateCategoryCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);

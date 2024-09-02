@@ -40,7 +40,7 @@ namespace OnlineShop.UnitTest.Api.Controller
             var categoryController = new CategoryController(_moqMediator.Object);
             _moqMediator.Setup(m => m.Send(It.IsAny<CreateOrderCommand>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
-            var response = await categoryController.CreateCategory(new CreateCategoryCommand());
+            var response = await categoryController.Create(new CreateCategoryCommand());
 
             var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();

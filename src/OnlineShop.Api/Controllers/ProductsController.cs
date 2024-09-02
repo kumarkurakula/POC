@@ -34,7 +34,7 @@ namespace OnlineShop.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [Route("addproducts")]
-        public async Task<ActionResult> AddProducts([FromBody] AddProductCommand request)
+        public async Task<ActionResult> Add([FromBody] AddProductCommand request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);
