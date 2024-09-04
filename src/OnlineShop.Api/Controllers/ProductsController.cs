@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Application.Features.ProductsFeatures.Commands;
 using OnlineShop.Application.Features.ProductsFeatures.Queries;
+using OnlineShop.Application.Model;
 using OnlineShop.Domain.Entities;
 using System.Collections.Generic;
 using System.Net;
@@ -34,7 +34,7 @@ namespace OnlineShop.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [Route("addproducts")]
-        public async Task<ActionResult> Add([FromBody] AddProductCommand request)
+        public async Task<ActionResult> Add([FromBody] ProductRequest request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);

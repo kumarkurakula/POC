@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using OnlineShop.Application.Model;
 using OnlineShop.Domain.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
 using System.Threading;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Application.Features.CategoryFeature.Commands
 {
-    public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, bool>
+    public class CreateCategoryCommandHandler : IRequestHandler<CategoryRequest, bool>
     {
         private readonly IApplicationInMemoryDbContext _context;
         private readonly IMapper _mapper;
@@ -18,7 +19,7 @@ namespace OnlineShop.Application.Features.CategoryFeature.Commands
             _mapper = mapper;
         }
 
-        public async Task<bool> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(CategoryRequest request, CancellationToken cancellationToken)
         {
             var category = _mapper.Map<Category>(request);
             var response = await _context.CreateCategory(category);

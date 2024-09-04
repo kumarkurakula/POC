@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Moq;
 using OnlineShop.Application.Features.ProductsFeatures.Commands;
+using OnlineShop.Application.Model;
 using OnlineShop.Domain.Entities;
 using OnlineShop.UnitTest.Fixtures;
 
@@ -10,12 +11,12 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Commands
     public class AddProductCommandHandlerTest : IClassFixture<ApplicationFixture>
     {
         private readonly ApplicationFixture _fixtures;
-        private readonly AddProductCommand _createOrderCommand;
+        private readonly ProductRequest _createOrderCommand;
 
         public AddProductCommandHandlerTest(ApplicationFixture fixtures)
         {
             _fixtures = fixtures;
-            _createOrderCommand = _fixtures.Fixture.Create<AddProductCommand>();
+            _createOrderCommand = _fixtures.Fixture.Create<ProductRequest>();
         }
 
         [Fact]

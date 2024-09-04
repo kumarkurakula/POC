@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using OnlineShop.Domain.Enum;
 
-namespace OnlineShop.Application.Features.ProductsFeatures.Commands
+namespace OnlineShop.Application.Model
 {
-    public class AddProductCommand : IRequest<bool>
+    public class ProductRequest : IRequest<bool>
     {
         public int CategoryId { get; set; }
         public string ProductName { get; set; }

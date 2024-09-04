@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace OnlineShop.Application.Features.CategoryFeature.Commands
+namespace OnlineShop.Application.Model
 {
-    public class CreateCategoryCommand : IRequest<bool>
+    public class CategoryRequest : IRequest<bool>
     {
         public string CategoryId { get; set; }
         public string CategoryName { get; set; }

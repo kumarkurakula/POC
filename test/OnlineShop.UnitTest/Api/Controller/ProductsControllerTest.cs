@@ -3,8 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using OnlineShop.Api.Controllers;
-using OnlineShop.Application.Features.ProductsFeatures.Commands;
 using OnlineShop.Application.Features.ProductsFeatures.Queries;
+using OnlineShop.Application.Model;
 using System.Net;
 
 namespace OnlineShop.UnitTest.Api.Controller
@@ -38,7 +38,7 @@ namespace OnlineShop.UnitTest.Api.Controller
             var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();
             result.StatusCode.Should().Be((int)HttpStatusCode.OK);
-            
+
             _moqMediator.Verify(x => x.Send(It.IsAny<GetAllProductsQuery>(), It.IsAny<CancellationToken>()));
         }
 
@@ -46,15 +46,15 @@ namespace OnlineShop.UnitTest.Api.Controller
         public async Task ProductsController_Should_Return_HttpStatusCode_Ok_When_ResponseIsNotNullOrEmpty()
         {
             var productsController = new ProductsController(_moqMediator.Object);
-            _moqMediator.Setup(m => m.Send(It.IsAny<AddProductCommand>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
+            _moqMediator.Setup(m => m.Send(It.IsAny<ProductRequest>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
-            var response = await productsController.Add(new AddProductCommand());
+            var response = await productsController.Add(new ProductRequest());
 
             var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();
             result.StatusCode.Should().Be((int)HttpStatusCode.OK);
 
-            _moqMediator.Verify(x => x.Send(It.IsAny<AddProductCommand>(), It.IsAny<CancellationToken>()));
+            _moqMediator.Verify(x => x.Send(It.IsAny<ProductRequest>(), It.IsAny<CancellationToken>()));
         }
     }
 }

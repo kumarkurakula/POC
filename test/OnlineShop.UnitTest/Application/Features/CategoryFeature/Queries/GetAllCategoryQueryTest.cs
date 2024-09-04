@@ -25,7 +25,7 @@ namespace OnlineShop.UnitTest.Application.Features.CategoryFeature.Queries
 
             var categoryQueryHandler = new GetAllCategoryQueryHandler(_fixtures.MoqApplicationInMemoryDbContext.Object);
             var category = categoryQueryHandler!.Handle(_getAllCategoryQuery, default);
-            
+
             category!.Result.Should().BeNullOrEmpty();
 
             _fixtures.MoqApplicationInMemoryDbContext.Verify(x => x.GetCateroy());

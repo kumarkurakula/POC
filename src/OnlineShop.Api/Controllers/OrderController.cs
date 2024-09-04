@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Application.Features.OrderFeatures.Commands;
+using OnlineShop.Application.Model;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -20,7 +20,7 @@ namespace OnlineShop.Api.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult> Create([FromBody] CreateOrderCommand command)
+        public async Task<ActionResult> Create([FromBody] OrderRequest command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);

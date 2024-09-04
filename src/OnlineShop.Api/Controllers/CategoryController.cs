@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Application.Features.CategoryFeature.Commands;
 using OnlineShop.Application.Features.CategoryFeature.Queries;
+using OnlineShop.Application.Model;
 using OnlineShop.Domain.Entities;
 using System.Collections.Generic;
 using System.Net;
@@ -23,7 +23,7 @@ namespace OnlineShop.Api.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult> Create([FromBody] CreateCategoryCommand command)
+        public async Task<ActionResult> Create([FromBody] CategoryRequest command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);

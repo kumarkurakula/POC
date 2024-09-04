@@ -2,9 +2,9 @@
 using OnlineShop.Domain.Entities;
 using System.Collections.Generic;
 
-namespace OnlineShop.Application.Features.OrderFeatures.Commands
+namespace OnlineShop.Application.Model
 {
-    public class CreateOrderCommand : IRequest<bool>
+    public class OrderRequest : IRequest<bool>
     {
         public int CustomerId { get; set; }
 

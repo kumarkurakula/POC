@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using OnlineShop.Application.Features.CategoryFeature.Commands;
-using OnlineShop.Application.Features.OrderFeatures.Commands;
-using OnlineShop.Application.Features.ProductsFeatures.Commands;
+using OnlineShop.Application.Model;
 using OnlineShop.Domain.Entities;
 
 namespace OnlineShop.Application.Mappings
@@ -10,9 +8,9 @@ namespace OnlineShop.Application.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<AddProductCommand, Product>().ReverseMap();
-            CreateMap<CreateOrderCommand, OrderDetail>().ReverseMap();
-            CreateMap<CreateCategoryCommand, Category>().ReverseMap();
+            CreateMap<ProductRequest, Product>().ReverseMap();
+            CreateMap<OrderRequest, OrderDetail>().ReverseMap();
+            CreateMap<CategoryRequest, Category>().ReverseMap();
         }
     }
 }

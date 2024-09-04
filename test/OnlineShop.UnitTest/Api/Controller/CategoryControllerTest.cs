@@ -7,6 +7,7 @@ using OnlineShop.Application.Features.CategoryFeature.Commands;
 using OnlineShop.Application.Features.CategoryFeature.Queries;
 using OnlineShop.Application.Features.OrderFeatures.Commands;
 using OnlineShop.Application.Features.ProductsFeatures.Queries;
+using OnlineShop.Application.Model;
 using System.Net;
 
 namespace OnlineShop.UnitTest.Api.Controller
@@ -38,15 +39,15 @@ namespace OnlineShop.UnitTest.Api.Controller
         public async Task CategoryController_Should_Return_HttpStatusCode_Ok_When_ResponseIsNotNullOrEmpty()
         {
             var categoryController = new CategoryController(_moqMediator.Object);
-            _moqMediator.Setup(m => m.Send(It.IsAny<CreateOrderCommand>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
+            _moqMediator.Setup(m => m.Send(It.IsAny<CategoryRequest>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
-            var response = await categoryController.Create(new CreateCategoryCommand());
+            var response = await categoryController.Create(new CategoryRequest());
 
             var result = Assert.IsType<OkObjectResult>(response);
             response.Should().NotBeNull();
             result.StatusCode.Should().Be((int)HttpStatusCode.OK);
 
-            _moqMediator.Verify(x => x.Send(It.IsAny<CreateCategoryCommand>(), It.IsAny<CancellationToken>()));
+            _moqMediator.Verify(x => x.Send(It.IsAny<CategoryRequest>(), It.IsAny<CancellationToken>()));
         }
     }
 }

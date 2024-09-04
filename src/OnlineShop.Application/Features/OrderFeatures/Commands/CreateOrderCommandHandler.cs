@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using OnlineShop.Application.Model;
 using OnlineShop.Domain.Contracts.Persistence;
 using OnlineShop.Domain.Entities;
 using System.Threading;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Application.Features.OrderFeatures.Commands
 {
-    public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, bool>
+    public class CreateOrderCommandHandler : IRequestHandler<OrderRequest, bool>
     {
         private readonly IApplicationInMemoryDbContext _context;
         private readonly IMapper _mapper;
@@ -18,7 +19,7 @@ namespace OnlineShop.Application.Features.OrderFeatures.Commands
             _mapper = mapper;
         }
 
-        public async Task<bool> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(OrderRequest request, CancellationToken cancellationToken)
         {
             var orders = _mapper.Map<OrderDetail>(request);
 
