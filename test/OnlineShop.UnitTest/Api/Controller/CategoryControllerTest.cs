@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using OnlineShop.Api.Controllers;
 using OnlineShop.Application.Features.CategoryFeature.Commands;
-using OnlineShop.Application.Features.CategoryFeature.Queries;
 using OnlineShop.Application.Features.OrderFeatures.Commands;
 using OnlineShop.Application.Features.ProductsFeatures.Queries;
+using OnlineShop.Application.Handlers.CategoryHandler.Queries;
 using OnlineShop.Application.Model;
 using System.Net;
 

@@ -1,19 +1,19 @@
 ﻿using AutoFixture;
 using FluentAssertions;
 using Moq;
-using OnlineShop.Application.Features.CategoryFeature.Commands;
+using OnlineShop.Application.Handlers.CategoryHandler.Commands;
 using OnlineShop.Application.Model;
 using OnlineShop.Domain.Entities;
 using OnlineShop.UnitTest.Fixtures;
 
-namespace OnlineShop.UnitTest.Application.Features.CategoryFeature.Commands
+namespace OnlineShop.UnitTest.Application.Handlers.CategoryHandlers.Commands
 {
-    public class AddCategoryCommandHandlerTest : IClassFixture<ApplicationFixture>
+    public class CreateCategoryCommandHandlerTest : IClassFixture<ApplicationFixture>
     {
         private readonly ApplicationFixture _fixtures;
         private readonly CategoryRequest _createCategoryCommand;
 
-        public AddCategoryCommandHandlerTest(ApplicationFixture fixtures)
+        public CreateCategoryCommandHandlerTest(ApplicationFixture fixtures)
         {
             _fixtures = fixtures;
             _createCategoryCommand = _fixtures.Fixture.Create<CategoryRequest>();

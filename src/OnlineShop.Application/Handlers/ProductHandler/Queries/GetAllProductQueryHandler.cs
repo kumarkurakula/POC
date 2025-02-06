@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Application.Features.ProductsFeatures.Queries
+namespace OnlineShop.Application.Handlers.ProductHandler.Queries
 {
     public class GetAllProductQueryHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<Product>>
     {

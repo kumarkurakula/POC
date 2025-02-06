@@ -1,11 +1,11 @@
 ﻿using AutoFixture;
 using FluentAssertions;
 using Moq;
-using OnlineShop.Application.Features.CategoryFeature.Queries;
+using OnlineShop.Application.Handlers.CategoryHandler.Queries;
 using OnlineShop.Domain.Entities;
 using OnlineShop.UnitTest.Fixtures;
 
-namespace OnlineShop.UnitTest.Application.Features.CategoryFeature.Queries
+namespace OnlineShop.UnitTest.Application.Handlers.CategoryHandlers.Queries
 {
     public class GetAllCategoryQueryTest : IClassFixture<ApplicationFixture>
     {

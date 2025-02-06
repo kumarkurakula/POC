@@ -6,14 +6,14 @@ using OnlineShop.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Application.Features.ProductsFeatures.Commands
+namespace OnlineShop.Application.Handlers.ProductHandler.Commands
 {
-    public class AddProductCommandHandler : IRequestHandler<ProductRequest, bool>
+    public class CreateProductCommandHandler : IRequestHandler<ProductRequest, bool>
     {
         private readonly IApplicationInMemoryDbContext _context;
         private readonly IMapper _mapper;
 
-        public AddProductCommandHandler(IApplicationInMemoryDbContext context, IMapper mapper)
+        public CreateProductCommandHandler(IApplicationInMemoryDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

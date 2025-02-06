@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Application.Features.CategoryFeature.Queries
+namespace OnlineShop.Application.Handlers.CategoryHandler.Queries
 {
     public class GetAllCategoryQueryHandler : IRequestHandler<GetAllCategoryQuery, IEnumerable<Category>>
     {

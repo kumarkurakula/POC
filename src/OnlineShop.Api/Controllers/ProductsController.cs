@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Application.Features.ProductsFeatures.Queries;
+using OnlineShop.Application.Handlers.ProductHandler.Queries;
 using OnlineShop.Application.Model;
 using OnlineShop.Domain.Entities;
 using System.Collections.Generic;

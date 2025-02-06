@@ -6,25 +6,26 @@ using OnlineShop.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Application.Features.CategoryFeature.Commands
+namespace OnlineShop.Application.Handlers.OrderHandler.Commands
 {
-    public class CreateCategoryCommandHandler : IRequestHandler<CategoryRequest, bool>
+    public class CreateOrderCommandHandler : IRequestHandler<OrderRequest, bool>
     {
         private readonly IApplicationInMemoryDbContext _context;
         private readonly IMapper _mapper;
 
-        public CreateCategoryCommandHandler(IApplicationInMemoryDbContext context, IMapper mapper)
+        public CreateOrderCommandHandler(IApplicationInMemoryDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public async Task<bool> Handle(CategoryRequest request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(OrderRequest request, CancellationToken cancellationToken)
         {
-            var category = _mapper.Map<Category>(request);
-            var response = await _context.CreateCategory(category);
+            var orders = _mapper.Map<OrderDetail>(request);
 
-            if (response >= 1)
+            var isAdded = await _context.CreateOrders(orders).ConfigureAwait(false);
+
+            if (isAdded >= 1)
             {
                 return true;
             }

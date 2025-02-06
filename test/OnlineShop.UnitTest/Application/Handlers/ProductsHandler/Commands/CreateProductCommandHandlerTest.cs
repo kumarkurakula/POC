@@ -1,19 +1,19 @@
 ﻿using AutoFixture;
 using FluentAssertions;
 using Moq;
-using OnlineShop.Application.Features.ProductsFeatures.Commands;
+using OnlineShop.Application.Handlers.ProductHandler.Commands;
 using OnlineShop.Application.Model;
 using OnlineShop.Domain.Entities;
 using OnlineShop.UnitTest.Fixtures;
 
-namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Commands
+namespace OnlineShop.UnitTest.Application.Handlers.ProductsHandler.Commands
 {
-    public class AddProductCommandHandlerTest : IClassFixture<ApplicationFixture>
+    public class CreateProductCommandHandlerTest : IClassFixture<ApplicationFixture>
     {
         private readonly ApplicationFixture _fixtures;
         private readonly ProductRequest _createOrderCommand;
 
-        public AddProductCommandHandlerTest(ApplicationFixture fixtures)
+        public CreateProductCommandHandlerTest(ApplicationFixture fixtures)
         {
             _fixtures = fixtures;
             _createOrderCommand = _fixtures.Fixture.Create<ProductRequest>();
@@ -24,7 +24,7 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Commands
         {
             _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.AddProducts(It.IsAny<Product>())).ReturnsAsync(1);
 
-            var productCommandHandler = new AddProductCommandHandler(_fixtures.MoqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
+            var productCommandHandler = new CreateProductCommandHandler(_fixtures.MoqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
             var response = productCommandHandler.Handle(_createOrderCommand, default);
 
             response.Should().NotBeNull();
@@ -38,7 +38,7 @@ namespace OnlineShop.UnitTest.Application.Features.ProductsFeatures.Commands
         {
             _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.AddProducts(It.IsAny<Product>())).ReturnsAsync(0);
 
-            var productCommandHandler = new AddProductCommandHandler(_fixtures.MoqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
+            var productCommandHandler = new CreateProductCommandHandler(_fixtures.MoqApplicationInMemoryDbContext.Object, _fixtures.MoqMapper.Object);
             var response = productCommandHandler.Handle(_createOrderCommand, default);
 
             response.Should().NotBeNull();

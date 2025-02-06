@@ -1,12 +1,12 @@
 ﻿using AutoFixture;
 using FluentAssertions;
 using Moq;
-using OnlineShop.Application.Features.OrderFeatures.Commands;
+using OnlineShop.Application.Handlers.OrderHandler.Commands;
 using OnlineShop.Application.Model;
 using OnlineShop.Domain.Entities;
 using OnlineShop.UnitTest.Fixtures;
 
-namespace OnlineShop.UnitTest.Application.Features.OrderFeatures
+namespace OnlineShop.UnitTest.Application.Handlers.OrderHandlers
 {
     public class CreateOrderCommandHandlerTest : IClassFixture<ApplicationFixture>
     {

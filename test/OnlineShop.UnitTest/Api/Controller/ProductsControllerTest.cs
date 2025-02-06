@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using OnlineShop.Api.Controllers;
-using OnlineShop.Application.Features.ProductsFeatures.Queries;
+using OnlineShop.Application.Handlers.ProductHandler.Queries;
 using OnlineShop.Application.Model;
 using System.Net;
 
