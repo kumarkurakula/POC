@@ -20,7 +20,7 @@ namespace OnlineShop.UnitTest.Application.Handlers.ProductsHandler.Commands
         }
 
         [Fact]
-        public void AddProductCommandHandler_Should_Save_NewProducts_When_PrductsIsNotNullOrEmpty()
+        public void CreateProductCommandHandler_Should_Save_NewProducts_When_PrductsIsNotNullOrEmpty()
         {
             _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.AddProducts(It.IsAny<Product>())).ReturnsAsync(1);
 
@@ -34,7 +34,7 @@ namespace OnlineShop.UnitTest.Application.Handlers.ProductsHandler.Commands
         }
 
         [Fact]
-        public void AddProductCommandHandler_Should_Save_NewProducts_When_PrductsIsNullOrEmpty()
+        public void CreateProductCommandHandler_Should_Save_NewProducts_When_PrductsIsNullOrEmpty()
         {
             _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.AddProducts(It.IsAny<Product>())).ReturnsAsync(0);
 

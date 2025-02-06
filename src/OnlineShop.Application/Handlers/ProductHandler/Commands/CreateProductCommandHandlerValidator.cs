@@ -8,7 +8,7 @@ namespace OnlineShop.Application.Handlers.ProductHandler.Commands
         public CreateProductCommandHandlerValidator()
         {
             RuleFor(command => command.CategoryId)
-                .NotEmpty()
+                .GreaterThan(0)
                 .WithMessage($"{nameof(ProductRequest.CategoryId)} should not be NullOrEmpty");
 
             RuleFor(command => command.ProductName)

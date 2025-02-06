@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineShop.Application.Behaviors;
 using System.Diagnostics.CodeAnalysis;
@@ -13,8 +14,9 @@ namespace OnlineShop.Application
         {
             return services
                 .AddAutoMapper(Assembly.GetExecutingAssembly())
-                .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>))
-                .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+                .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly())
+                .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()))
+                .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         }
     }
 }

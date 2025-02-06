@@ -20,7 +20,7 @@ namespace OnlineShop.UnitTest.Application.Handlers.CategoryHandlers.Commands
         }
 
         [Fact]
-        public void AddCategoryCommandHandler_Should_Save_NewCategory_When_CategoryIsNotNullOrEmpty()
+        public void CreateCategoryCommandHandlerTest_Should_Save_NewCategory_When_CategoryIsNotNullOrEmpty()
         {
             _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.CreateCategory(It.IsAny<Category>())).ReturnsAsync(1);
 
@@ -34,7 +34,7 @@ namespace OnlineShop.UnitTest.Application.Handlers.CategoryHandlers.Commands
         }
 
         [Fact]
-        public void AddCategoryCommandHandler_Should_Save_NewProducts_When_CategoryIsNullOrEmpty()
+        public void CreateCategoryCommandHandlerTest_Should_Save_NewProducts_When_CategoryIsNullOrEmpty()
         {
             _fixtures.MoqApplicationInMemoryDbContext.Setup(x => x.CreateCategory(It.IsAny<Category>())).ReturnsAsync(0);
 
