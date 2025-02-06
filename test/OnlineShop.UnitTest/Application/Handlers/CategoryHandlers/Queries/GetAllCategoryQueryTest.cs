@@ -3,7 +3,7 @@ using FluentAssertions;
 using Moq;
 using OnlineShop.Application.Handlers.CategoryHandler.Queries;
 using OnlineShop.Domain.Entities;
-using OnlineShop.UnitTest.Fixtures;
+using OnlineShop.UnitTest.SharedContext;
 
 namespace OnlineShop.UnitTest.Application.Handlers.CategoryHandlers.Queries
 {

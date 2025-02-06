@@ -4,7 +4,7 @@ using Moq;
 using OnlineShop.Application.Handlers.ProductHandler.Commands;
 using OnlineShop.Application.Model;
 using OnlineShop.Domain.Entities;
-using OnlineShop.UnitTest.Fixtures;
+using OnlineShop.UnitTest.SharedContext;
 
 namespace OnlineShop.UnitTest.Application.Handlers.ProductsHandler.Commands
 {

@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using OnlineShop.Api.Middleware;
 using OnlineShop.Application.Exceptions;
-using OnlineShop.UnitTest.Fixtures;
 using System.Net.Mime;
 using System.Net;
+using OnlineShop.UnitTest.SharedContext;
 
 namespace OnlineShop.UnitTest.Api.Middleware
 {

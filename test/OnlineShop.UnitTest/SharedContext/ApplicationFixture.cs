@@ -9,7 +9,7 @@ using OnlineShop.Domain.Enum;
 using OnlineShop.Infrastructure.Persistence;
 using System.Diagnostics.CodeAnalysis;
 
-namespace OnlineShop.UnitTest.Fixtures
+namespace OnlineShop.UnitTest.SharedContext
 {
     [ExcludeFromCodeCoverage]
     public class ApplicationFixture
