@@ -10,6 +10,7 @@ using System.IO;
 namespace OnlineShop.Api
 {
     [ExcludeFromCodeCoverage]
+    [SuppressMessage("Major Code Smell", "S1118:Utility classes should not have public constructors", Justification = "<Pending>")]
     public class Program
     {
         public static void Main(string[] args)

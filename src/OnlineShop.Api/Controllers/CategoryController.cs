@@ -31,7 +31,7 @@ namespace OnlineShop.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Category>), (int)HttpStatusCode.OK)]
-        [Route("allcategory")]
+        [Route("categoryies")]
         public async Task<ActionResult> GetAllCategory()
         {
             var response = await _mediator.Send(new GetAllCategoryQuery());
